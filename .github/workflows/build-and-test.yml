@@ -1,0 +1,33 @@
+name: build-and-test
+
+on: [push]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: CMake with relative paths
+        uses: ./
+        with:
+          cmake-source-dir: ./__tests__/hello
+          cmake-build-dir: ./rel/build
+          cmake-install-prefix: ./rel/install
+          cmake-install: true
+          cmake-ctest: true
+
+      - name: CMake with absolute paths
+        uses: ./
+        with:
+          cmake-source-dir: ${{ github.workspace }}/__tests__/hello
+          cmake-build-dir: ${{ github.workspace }}/abs/build
+          cmake-install-prefix: ${{ github.workspace }}/abs/install
+          cmake-install: true
+          cmake-ctest: true
