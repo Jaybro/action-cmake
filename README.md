@@ -2,7 +2,7 @@
 
 [![build-and-test](https://github.com/Jaybro/action-cmake/workflows/build-and-test/badge.svg)](https://github.com/Jaybro/pico_tree/actions?query=workflow%3Abuild-and-test)
 
-Basic action for using [CMake](https://cmake.org/) in your workflows.
+This basic action simplifies integration of [CMake](https://cmake.org/) in your workflows.
 
 # Usage
 
@@ -10,7 +10,7 @@ Basic action for using [CMake](https://cmake.org/) in your workflows.
 - uses: Jaybro/action-cmake
   with:
     # Path to the top level of the source tree (aka cmake root directory).
-    # Default: ${{ github.workspace }}. This default is also used by @actions/checkout.
+    # Default: ${{ github.workspace }}. This default is also used by @actions/checkout@v2.
     cmake-source-dir: ''
 
     # Path to directory where the source will be build.
@@ -36,4 +36,16 @@ Basic action for using [CMake](https://cmake.org/) in your workflows.
     # Tests the build using CTest when set to true.
     # Default: false
     cmake-ctest: false
+```
+
+The following example shows how to build and test a repository that was cloned using [actions/checkout@v2](https://github.com/actions/checkout):
+
+```yaml
+- name: Checkout
+  uses: actions/checkout@v2
+
+- name: CMake build and test
+  uses: Jaybro/action-cmake
+  with:
+    cmake-ctest: true
 ```

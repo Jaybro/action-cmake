@@ -28,17 +28,16 @@ runs:
   steps:
     - name: Configure
       shell: bash
-      # Visual Studio ignores -DCMAKE_BUILD_TYPE=$BUILD_TYPE and will use cmake --config $BUILD_TYPE
+      # Visual Studio ignores -DCMAKE_BUILD_TYPE=$BUILD_TYPE and will use cmake --config $BUILD_TYPE.
       # Make like generators will do the opposite.
       run: cmake -S $(echo "${{ inputs.cmake-source-dir }}" | awk '{gsub(/\\/,"/", $0); print}') -B $(echo "${{ inputs.cmake-build-dir }}" | awk '{gsub(/\\/,"/", $0); print}') -DCMAKE_BUILD_TYPE=${{ inputs.cmake-build-type }} ${{ inputs.cmake-configure-flags }}
-    
+
     - name: Build
       shell: bash
       run: cmake --build $(echo "${{ inputs.cmake-build-dir }}" | awk '{gsub(/\\/,"/", $0); print}') --config ${{ inputs.cmake-build-type }} -j 3
-    
+
     - name: Install
       shell: bash
-      # macos-latest doesn't support ${var,,} for tolower
       # Composite actions don't seem to support an if: ${{ <expression> }}, hence the bash based if.
       run: |
         if [[ $(echo "${{ inputs.cmake-install }}" | awk '{print tolower($0)}') = "true" ]]; then 
