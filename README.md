@@ -1,6 +1,6 @@
 # CMake Action
 
-[![build-and-test](https://github.com/Jaybro/action-cmake/workflows/build-and-test/badge.svg)](https://github.com/Jaybro/pico_tree/actions?query=workflow%3Abuild-and-test)
+[![build-and-test](https://github.com/Jaybro/action-cmake/workflows/build-and-test/badge.svg)](https://github.com/Jaybro/action-cmake/actions?query=workflow%3Abuild-and-test)
 
 This basic action simplifies integration of [CMake](https://cmake.org/) in your workflows.
 
