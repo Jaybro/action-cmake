@@ -14,10 +14,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Copy cmake project to the workspace root
+        shell: bash
+        run: cp -r __tests__/cmake/* ./
+
+      - name: CMake with default paths
+        uses: ./
+        with:
+          cmake-install: true
+          cmake-ctest: true
+
       - name: CMake with relative paths
         uses: ./
         with:
-          cmake-source-dir: ./__tests__/hello
+          cmake-source-dir: ./__tests__/cmake
           cmake-build-dir: ./rel/build
           cmake-install-prefix: ./rel/install
           cmake-install: true
@@ -26,7 +36,7 @@ jobs:
       - name: CMake with absolute paths
         uses: ./
         with:
-          cmake-source-dir: ${{ github.workspace }}/__tests__/hello
+          cmake-source-dir: ${{ github.workspace }}/__tests__/cmake
           cmake-build-dir: ${{ github.workspace }}/abs/build
           cmake-install-prefix: ${{ github.workspace }}/abs/install
           cmake-install: true
