@@ -2,7 +2,7 @@
 
 [![build-and-test](https://github.com/Jaybro/action-cmake/workflows/build-and-test/badge.svg)](https://github.com/Jaybro/action-cmake/actions?query=workflow%3Abuild-and-test)
 
-This basic action simplifies integration of [CMake](https://cmake.org/) in your workflows.
+This basic action simplifies integration of [CMake](https://cmake.org/) into a [workflow](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions).
 
 # Usage
 
