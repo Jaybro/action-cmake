@@ -3,7 +3,7 @@ description: 'Use CMake for cross-platform build, install and test automation.'
 inputs:
   # The default clone path of actions/checkout equals $GITHUB_WORKSPACE (or ${{ github.workspace }}).
   cmake-source-dir:
-    description: 'Path to the top level of the source tree (aka root cmake directory).'
+    description: 'Path to the top level of the source tree (aka cmake root directory).'
     default: ${{ github.workspace }}
   cmake-build-dir:
     description: 'Path to directory where the source will be build.'
@@ -15,7 +15,7 @@ inputs:
     description: 'CMake build type. E.g.: Release.'
     default: 'Release'
   cmake-configure-flags:
-    description: 'CMake configure flags that can be set as -D<key>=<value>'
+    description: 'CMake configure flags that can be set as -D<key>=<value>, etc.'
     default: ''
   cmake-install:
     description: 'Installs the build when set to true.'
