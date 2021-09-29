@@ -17,7 +17,8 @@ This basic action simplifies integration of [CMake](https://cmake.org/) into a [
     # Default: ${{ github.workspace }}/build
     cmake-build-dir: ''
 
-    # Path to the directory which CMake will use as the root of the install directory. Overrides the installation prefix, CMAKE_INSTALL_PREFIX.
+    # Path to the directory which CMake will use as the root of the install directory.
+    # Overrides the installation prefix, CMAKE_INSTALL_PREFIX.
     # Default: ${{ github.workspace }}/install
     cmake-install-dir: ''
 
