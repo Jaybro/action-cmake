@@ -3,13 +3,13 @@ description: 'Use CMake for cross-platform build, install and test automation.'
 inputs:
   # The default clone path of actions/checkout equals $GITHUB_WORKSPACE (or ${{ github.workspace }}).
   cmake-source-dir:
-    description: 'Path to the top level of the source tree (aka cmake root directory).'
+    description: 'Path to the root directory of the CMake project to build.'
     default: ${{ github.workspace }}
   cmake-build-dir:
-    description: 'Path to directory where the source will be build.'
+    description: 'Path to the directory which CMake will use as the root of the build directory.'
     default: ${{ github.workspace }}/build
-  cmake-install-prefix:
-    description: 'Path to directory where the build will be installed.'
+  cmake-install-dir:
+    description: 'Path to the directory which CMake will use as the root of the install directory. Overrides the installation prefix, CMAKE_INSTALL_PREFIX.'
     default: ${{ github.workspace }}/install
   cmake-build-type:
     description: 'CMake build type. E.g.: Release.'
@@ -41,7 +41,7 @@ runs:
       # Composite actions don't seem to support an if: ${{ <expression> }}, hence the bash based if.
       run: |
         if [[ $(echo "${{ inputs.cmake-install }}" | awk '{print tolower($0)}') = "true" ]]; then 
-          cmake --install $(echo "${{ inputs.cmake-build-dir }}" | awk '{gsub(/\\/,"/", $0); print}') --prefix $(echo "${{ inputs.cmake-install-prefix }}" | awk '{gsub(/\\/,"/", $0); print}') --config ${{ inputs.cmake-build-type }}
+          cmake --install $(echo "${{ inputs.cmake-build-dir }}" | awk '{gsub(/\\/,"/", $0); print}') --prefix $(echo "${{ inputs.cmake-install-dir }}" | awk '{gsub(/\\/,"/", $0); print}') --config ${{ inputs.cmake-build-type }}
         else
           echo "Install skipped."
         fi

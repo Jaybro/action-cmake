@@ -9,17 +9,17 @@ This basic action simplifies integration of [CMake](https://cmake.org/) into a [
 ```yaml
 - uses: Jaybro/action-cmake
   with:
-    # Path to the top level of the source tree (aka cmake root directory).
+    # Path to the root directory of the CMake project to build.
     # Default: ${{ github.workspace }}. This default is also used by @actions/checkout@v2.
     cmake-source-dir: ''
 
-    # Path to directory where the source will be build.
+    # Path to the directory which CMake will use as the root of the build directory.
     # Default: ${{ github.workspace }}/build
     cmake-build-dir: ''
 
-    # Path to directory where the build will be installed.
+    # Path to the directory which CMake will use as the root of the install directory. Overrides the installation prefix, CMAKE_INSTALL_PREFIX.
     # Default: ${{ github.workspace }}/install
-    cmake-install-prefix: ''
+    cmake-install-dir: ''
 
     # CMake build type. E.g.: Release.
     # Default: Release

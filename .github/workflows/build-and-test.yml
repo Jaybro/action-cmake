@@ -29,7 +29,7 @@ jobs:
         with:
           cmake-source-dir: ./__tests__/cmake
           cmake-build-dir: ./rel/build
-          cmake-install-prefix: ./rel/install
+          cmake-install-dir: ./rel/install
           cmake-install: true
           cmake-ctest: true
 
@@ -38,6 +38,6 @@ jobs:
         with:
           cmake-source-dir: ${{ github.workspace }}/__tests__/cmake
           cmake-build-dir: ${{ github.workspace }}/abs/build
-          cmake-install-prefix: ${{ github.workspace }}/abs/install
+          cmake-install-dir: ${{ github.workspace }}/abs/install
           cmake-install: true
           cmake-ctest: true
