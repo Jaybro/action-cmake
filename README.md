@@ -7,7 +7,7 @@ This basic action simplifies integration of [CMake](https://cmake.org/) into a [
 # Usage
 
 ```yaml
-- uses: Jaybro/action-cmake
+- uses: Jaybro/action-cmake@v1
   with:
     # Path to the root directory of the CMake project to build.
     # Default: ${{ github.workspace }}. This default is also used by @actions/checkout@v2.
@@ -46,7 +46,7 @@ The following example shows how to build and test a repository that was cloned u
   uses: actions/checkout@v2
 
 - name: CMake build and test
-  uses: Jaybro/action-cmake
+  uses: Jaybro/action-cmake@v1
   with:
     cmake-ctest: true
 ```
